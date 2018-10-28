@@ -18,7 +18,7 @@ def helmLint(String chart_dir) {
 def helmConfig() {
     //setup helm connectivity to Kubernetes API and Tiller
     println "initiliazing helm client"
-    sh "helm init"
+    sh "helm init --stable-repo-url https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts"
     println "checking client/server version"
     sh "helm version"
 }
@@ -187,6 +187,7 @@ def getMapValues(Map map=[:]) {
 
     return map_values
 }
+
 
 @NonCPS
 def getHelmReleaseOverrides(Map map=[:]) {
